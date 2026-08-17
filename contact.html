@@ -66,52 +66,78 @@
             <p class="lead" style="color: var(--text-color); margin-top: 15px; font-size: 18px; max-width: 750px;">For sock knit densities, arch compressions, heel padding clearances, or stride comforts, get in touch with our curators.</p>
         </section>
 
-        <!-- Atelier Blueprint Box & Knitted Dashed Frame Form (100% Unique) -->
-        <section class="contact-blueprint-section">
-            <div class="container">
-                <div class="blueprint-grid-box">
-                    <div class="row g-4 align-items-center">
-                        <!-- Left Info Grid -->
-                        <div class="col-lg-5" data-reveal="left">
-                            <div class="row g-3">
-                                <div class="col-12">
-                                    <div class="blueprint-card">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                        <h3>Atelier Head Office</h3>
-                                        <p style="font-size: 14px; margin: 0;">181 Mercer Street, New York, NY 10012, United States</p>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="blueprint-card">
-                                        <i class="fa-solid fa-phone"></i>
-                                        <h3>Direct Curation Tel</h3>
-                                        <p style="font-size: 14px; margin: 0;"><a href="tel:+1-888-777-5845" style="color: var(--accent-color); font-weight: 800; text-decoration: underline;">+1-888-777-5845</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Right Knitted Dashed Form Frame -->
-                        <div class="col-lg-7" data-reveal="right">
-                            <form class="knitted-dashed-frame" onsubmit="return false;">
-                                <div class="mb-4">
-                                    <label for="name">Your Name</label>
-                                    <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
-                                </div>
-                                <div class="mb-4">
-                                    <label for="email">Email Address</label>
-                                    <input type="email" id="email" class="form-control" placeholder="Enter your email address" required>
-                                </div>
-                                <div class="mb-4">
-                                    <label for="message">Atelier / Stride Query</label>
-                                    <textarea id="message" class="form-control" rows="4" placeholder="Describe your yarn loops, arch compression scales, or heel friction values..." required></textarea>
-                                </div>
-                                <button type="submit" class="btn-default w-100">Send Inquiry</button>
-                                <p style="font-size: 12px; opacity: 0.8; margin-top: 15px; text-align: center; color: var(--text-color);">Clicking opens your default desktop email helper to guarantee secure, direct message transmissions.</p>
-                            </form>
-                        </div>
-                    </div>
+        <!-- Section 1: Slanted Left-Right Split Panel Layout -->
+        <section class="contact-slanted-split">
+            <!-- Left Panel (40% width, Teal background, slanted shape) -->
+            <div class="contact-left-panel" data-reveal="left">
+                <div class="contact-details-box">
+                    <h3>Atelier Head Office</h3>
+                    <p style="font-weight: 800;"><i class="fa-solid fa-location-dot"></i> Address:</p>
+                    <p>181 Mercer Street, New York, NY 10012, United States</p>
+                    <p style="font-weight: 800; margin-top: 20px;"><i class="fa-solid fa-phone"></i> Telephone:</p>
+                    <p><a href="tel:+1-888-777-5845">+1-888-777-5845</a></p>
                 </div>
+            </div>
+
+            <!-- Right Panel (60% width, Cream background) -->
+            <div class="contact-right-panel" data-reveal="right">
+                <form class="w-100" onsubmit="return false;" style="max-width: 600px; background: var(--white-color); padding: 40px; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
+                    <div class="mb-4">
+                        <label for="name" style="font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--accent-color); margin-bottom: 8px; display: block;">Your Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Enter your full name" style="background: var(--bg-color); border: 1px solid var(--border-color); padding: 12px; font-size: 14px; border-radius: 4px;" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" style="font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--accent-color); margin-bottom: 8px; display: block;">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="Enter your email address" style="background: var(--bg-color); border: 1px solid var(--border-color); padding: 12px; font-size: 14px; border-radius: 4px;" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="message" style="font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--accent-color); margin-bottom: 8px; display: block;">Atelier / Stride Query</label>
+                        <textarea id="message" class="form-control" rows="4" placeholder="Describe your yarn loops, arch compression scales, or heel friction values..." style="background: var(--bg-color); border: 1px solid var(--border-color); padding: 12px; font-size: 14px; border-radius: 4px;" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-default w-100">Send Inquiry</button>
+                    <p style="font-size: 12px; opacity: 0.8; margin-top: 15px; text-align: center; color: var(--text-color);">Clicking opens your default desktop email helper to guarantee secure, direct message transmissions.</p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Section 2: Atelier Inspection Schedule (ADDITIONAL SECTION) -->
+        <section class="inspection-schedule-section" data-reveal="zoom">
+            <div class="container">
+                <div class="section-title">
+                    <span>Curator Availability</span>
+                    <h2>Atelier Inspection Schedule</h2>
+                </div>
+
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Atelier Zone</th>
+                            <th>Inspection Timing</th>
+                            <th>Desk Location</th>
+                            <th>Audit Scope</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Footwear Calibration Desk</strong></td>
+                            <td>Mon - Wed: 9:00 AM - 12:00 PM EST</td>
+                            <td>Suite 401 (North Panel)</td>
+                            <td>Knit Density & Spandex Elasticity</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Stride Testing Room</strong></td>
+                            <td>Tue - Thu: 1:00 PM - 4:00 PM EST</td>
+                            <td>Room 102 (Basement Labs)</td>
+                            <td>Heel Friction & Walk Blister Trials</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Material Sourcing Hub</strong></td>
+                            <td>Friday: 10:00 AM - 3:00 PM EST</td>
+                            <td>Suite 204 (East Wing)</td>
+                            <td>Merino Wool Loft & Bamboo Capillary Check</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
     </main>
