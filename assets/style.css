@@ -441,6 +441,111 @@ a {
     opacity: 0.8;
 }
 
+/* --- NEW SECTIONS FOR MAIN PAGE (index.php) --- */
+
+/* Section 5: The Knit Tension Lab Registry */
+.tension-lab-section {
+    padding: 120px 0;
+    background: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.lab-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.lab-card {
+    background: var(--white-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.lab-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-peach);
+}
+
+.lab-card i {
+    font-size: 32px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.lab-card h3 {
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+.lab-card p {
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Section 6: Active Customer Walking Logs */
+.walking-logs-section {
+    padding: 120px 0;
+    background: var(--secondary-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.log-item {
+    background: var(--card-color);
+    border: 1px solid var(--border-color);
+    padding: 25px 35px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+    transition: transform 0.3s ease;
+}
+
+.log-item:hover {
+    transform: translateX(10px);
+}
+
+.log-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.log-profile i {
+    font-size: 20px;
+    color: var(--accent-peach);
+}
+
+.log-details {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--accent-color);
+}
+
+.log-status {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
 /* --- NEW REDESIGNED LAYOUTS FOR NON-HOME PAGES --- */
 
 /* 1. New About Page Layout: Slanted Banner, Staggered Columns, QC Calibrations, Slipper Benchmarks */
@@ -875,6 +980,27 @@ a {
     margin: 30px 0;
 }
 
+/* Buttons */
+.btn-default {
+	background: var(--accent-color);
+	color: var(--white-color);
+	padding: 12px 30px;
+	font-size: 13px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	border-radius: 4px;
+	display: inline-block;
+	transition: all 0.3s ease;
+	border: none;
+	cursor: pointer;
+}
+
+.btn-default:hover {
+	background: var(--accent-peach);
+	color: var(--text-color);
+}
+
 /* Footer */
 .flat-footer {
 	background: var(--white-color);
@@ -967,6 +1093,14 @@ a {
     }
     .gauges-grid {
         grid-template-columns: 1fr;
+    }
+    .lab-grid {
+        grid-template-columns: 1fr;
+    }
+    .log-item {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
     }
     .staggered-column-grid {
         flex-direction: column;

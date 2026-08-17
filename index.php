@@ -278,6 +278,104 @@
     </section>
     <!-- Section 4 End -->
 
+    <!-- Section 5: The Knit Tension Lab Registry (NEW SECTION) -->
+    <section class="tension-lab-section">
+        <div class="container">
+            <div class="section-title" data-reveal>
+                <span>Lab Environment</span>
+                <h2>The Knit Tension Lab</h2>
+            </div>
+            
+            <div class="lab-grid">
+                <!-- Lab 1 -->
+                <div class="lab-card" data-reveal="left">
+                    <i class="fa-solid fa-arrows-spin"></i>
+                    <h3>Thread Strain Mapping</h3>
+                    <p>Analyzing fiber elasticity thresholds under heavy loads to map the exact timing limit of loop expansion waves.</p>
+                </div>
+                
+                <!-- Lab 2 -->
+                <div class="lab-card" data-reveal="zoom">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <h3>Friction Sweep Auditing</h3>
+                    <p>Continuous rubbing runs against synthetic lining guides to evaluate sliding wear coefficients and heat retention.</p>
+                </div>
+                
+                <!-- Lab 3 -->
+                <div class="lab-card" data-reveal="right">
+                    <i class="fa-solid fa-weight-scale"></i>
+                    <h3>Compression Curve Verification</h3>
+                    <p>Mapping blood-flow velocity parameters against localized compressive sleeve bands under pressure gauge tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section 5 End -->
+
+    <!-- Section 6: Active Customer Walking Logs / Stride Feed (NEW SECTION) -->
+    <section class="walking-logs-section">
+        <div class="container">
+            <div class="section-title" data-reveal>
+                <span>Stride Feed</span>
+                <h2>Logged Stride Benchmarks</h2>
+            </div>
+            
+            <div class="logs-list" data-reveal="zoom">
+                <!-- Log 1 -->
+                <div class="log-item">
+                    <div class="log-profile">
+                        <i class="fa-solid fa-location-arrow"></i>
+                        <div>
+                            <strong style="display: block;">User ID: CS-Walking-882</strong>
+                            <span style="font-size: 12px; opacity: 0.8;">Location: Manhattan, New York</span>
+                        </div>
+                    </div>
+                    <div class="log-details">
+                        Style: Merino Crew // Steps logged: 14,250
+                    </div>
+                    <div class="log-status">
+                        Verified Compliant
+                    </div>
+                </div>
+
+                <!-- Log 2 -->
+                <div class="log-item">
+                    <div class="log-profile">
+                        <i class="fa-solid fa-location-arrow"></i>
+                        <div>
+                            <strong style="display: block;">User ID: CS-Walking-941</strong>
+                            <span style="font-size: 12px; opacity: 0.8;">Location: Brooklyn, New York</span>
+                        </div>
+                    </div>
+                    <div class="log-details">
+                        Style: Bamboo Liner // Steps logged: 18,920
+                    </div>
+                    <div class="log-status">
+                        Verified Compliant
+                    </div>
+                </div>
+
+                <!-- Log 3 -->
+                <div class="log-item">
+                    <div class="log-profile">
+                        <i class="fa-solid fa-location-arrow"></i>
+                        <div>
+                            <strong style="display: block;">User ID: CS-Walking-304</strong>
+                            <span style="font-size: 12px; opacity: 0.8;">Location: Queens, New York</span>
+                        </div>
+                    </div>
+                    <div class="log-details">
+                        Style: Compression Sleeve // Steps logged: 25,600
+                    </div>
+                    <div class="log-status">
+                        Verified Compliant
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section 6 End -->
+
     <!-- Centered Footer Start -->
     <footer class="flat-footer text-center">
         <div class="container">
